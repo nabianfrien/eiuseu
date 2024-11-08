@@ -1,0 +1,16 @@
+function ringContains(ring, point) {
+    var x = point[0];
+    var y = point[1];
+    var n = ring.length;
+    var inside = false;
+    for (var i = 0; i < n; i++) {
+        var px1 = ring[i][0];
+        var py1 = ring[i][1];
+        var px2 = ring[(i + 1) % n][0];
+        var py2 = ring[(i + 1) % n][1];
+        if (((py1 <= y && y <= py2) || (py1 > y && py2 > y)) && (x <= px1 + (px2 - px1) * (y - py1) / (py2 - py1))) {
+            inside = !inside;
+        }
+    }
+    return inside;
+}
